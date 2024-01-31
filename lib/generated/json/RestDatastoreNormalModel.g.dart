@@ -268,6 +268,10 @@ RestDatastoreNormalRecordsLocationWeatherElementTimeParameter $RestDatastoreNorm
   if (parameterValue != null) {
     restDatastoreNormalRecordsLocationWeatherElementTimeParameter.parameterValue = parameterValue;
   }
+  final String? parameterUnit = jsonConvert.convert<String>(json['parameterUnit']);
+  if (parameterUnit != null) {
+    restDatastoreNormalRecordsLocationWeatherElementTimeParameter.parameterUnit = parameterUnit;
+  }
   return restDatastoreNormalRecordsLocationWeatherElementTimeParameter;
 }
 
@@ -276,6 +280,7 @@ Map<String, dynamic> $RestDatastoreNormalRecordsLocationWeatherElementTimeParame
   final Map<String, dynamic> data = <String, dynamic>{};
   data['parameterName'] = entity.parameterName;
   data['parameterValue'] = entity.parameterValue;
+  data['parameterUnit'] = entity.parameterUnit;
   return data;
 }
 
@@ -283,9 +288,11 @@ extension RestDatastoreNormalRecordsLocationWeatherElementTimeParameterExtension
   RestDatastoreNormalRecordsLocationWeatherElementTimeParameter copyWith({
     String? parameterName,
     String? parameterValue,
+    String? parameterUnit,
   }) {
     return RestDatastoreNormalRecordsLocationWeatherElementTimeParameter()
       ..parameterName = parameterName ?? this.parameterName
-      ..parameterValue = parameterValue ?? this.parameterValue;
+      ..parameterValue = parameterValue ?? this.parameterValue
+      ..parameterUnit = parameterUnit ?? this.parameterUnit;
   }
 }
