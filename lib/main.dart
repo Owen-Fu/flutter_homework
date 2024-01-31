@@ -1,4 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_homework/Tool/Net/http_response.dart';
+import 'package:flutter_homework/Tool/Net/requester.dart';
+import 'package:flutter_homework/Weather/Service/weather_service.dart';
+
+import 'generated/json/base/json_convert_content.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,7 +64,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    Requester();
+    Requester.ins.respParser = (type, response) {
+      return (jsonConvert.convertFuncMap[type.toString()])?.call((response.data ?? {}));
+    };
+  }
+
   void _incrementCounter() {
+    WeatherService service = WeatherService();
+    service.getWeatherNormal().then((value) => log("api res: ${value?.toJson().toString()}")).catchError((onError) {
+      if (onError is ServerError) {
+        log("onError: ${onError.json.toString()}");
+      }
+    });
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
