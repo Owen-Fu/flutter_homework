@@ -136,6 +136,9 @@ class RestDatastoreNormalRecordsLocationWeatherElementTime {
 class RestDatastoreNormalRecordsLocationWeatherElementTimeParameter {
   String? parameterName;
   String? parameterValue;
+  String? parameterUnit;
+
+  String? get getData => parameterValue ?? parameterUnit;
 
   RestDatastoreNormalRecordsLocationWeatherElementTimeParameter();
 
