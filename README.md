@@ -10,3 +10,5 @@ flutter 版本 3.16.9
   flutter_riverpod: ^2.4.9  
   flutter_screenutil: ^5.9.0  
   loading_animation_widget: ^1.2.0+4  
+
+IDE插件使用 FlutterJsonBeanFactory產生Model  
